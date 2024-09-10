@@ -6,7 +6,7 @@ def sign(num):
     if(num < 0):
         return -1
 
-#Цда
+
 def CDA(x0, y0, x1, y1, image):
     if(x1 == x0) and (y0 == y1):
         print("Отрезок является выражденным")
