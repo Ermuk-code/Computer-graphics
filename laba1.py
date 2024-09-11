@@ -147,26 +147,25 @@ def save_bmp(filename, image):
         0, 0, 0, 0           
     ])
     
-    # Pixel data
     pixel_data = bytearray()
-    for row in reversed(image):  # BMP format stores pixels bottom-to-top
+    for row in reversed(image):  
         for r, g, b in row:
-            pixel_data.append(b)  # Blue
-            pixel_data.append(g)  # Green
-            pixel_data.append(r)  # Red
+            pixel_data.append(b)  
+            pixel_data.append(g) 
+            pixel_data.append(r)  
 
-        # Add padding to ensure row size is a multiple of 4 bytes
+        
         padding = (4 - (width * 3) % 4) % 4
         pixel_data.extend(b'\x00' * padding)
 
-    # Set file size
+  
     file_size = 54 + len(pixel_data)
     bmp_header[2:6] = file_size.to_bytes(4, 'little')
     
-    # Set size of bitmap data
+   
     bmp_header[34:38] = len(pixel_data).to_bytes(4, 'little')
     
-    # Write to file
+
     with open(filename, 'wb') as f:
         f.write(bmp_header)
         f.write(pixel_data)
