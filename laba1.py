@@ -6,7 +6,9 @@ def sign(num):
     if(num < 0):
         return -1
 
-
+def drawline(x, y, image):
+    if 0 <= int(x) < len(image) and 0 <= int(y) < len(image[0]):
+        image[int(y)][int(x)] = (255, 255, 255)  # белый
 def CDA(x0, y0, x1, y1, image):
     if(x1 == x0) and (y0 == y1):
         print("Отрезок является выражденным")
@@ -19,8 +21,7 @@ def CDA(x0, y0, x1, y1, image):
         x = x0 + sign(dx) * 0.5
         y = y0 + sign(dy) * 0.5
         for i in range(L + 1):
-            if 0 <= int(x) < len(image) and 0 <= int(y) < len(image[0]):
-                image[int(y)][int(x)] = (255, 255, 255)  # белый
+            drawline(x, y, image)
             x += dx
             y += dy
 
@@ -42,40 +43,35 @@ def float_Bresenham(x0, y0, x1, y1, image):
         if dx > dy:
             err = dx // 2
             while x0 != x1:
-                if 0 <= x0 < len(image) and 0 <= y0 < len(image[0]):
-                    image[y0][x0] = (255, 255, 255)  # белый
+                drawline(x0, y0, image)
                 err -= dy
                 if err < 0:
                     y0 += sy
                     err += dx
                 x0 += sx
-            if 0 <= x1 < len(image) and 0 <= y1 < len(image[0]):
-                image[y1][x1] = (255, 255, 255)  # белый
+            drawline(x1, y1, image)
         else:
             err = dy // 2
             while y0 != y1:
-                if 0 <= x0 < len(image) and 0 <= y0 < len(image[0]):
-                    image[y0][x0] = (255, 255, 255)  # белый
+                drawline(x0, y0, image)
                 err -= dx
                 if err < 0:
                     x0 += sx
                     err += dy
                 y0 += sy
             if 0 <= x1 < len(image) and 0 <= y1 < len(image[0]):
-                image[y1][x1] = (255, 255, 255)  
+                drawline(x1, y1, image)
                     
             else:
                 flag = 0
                 while y0 != y1:
-                    if 0 <= x0 < len(image) and 0 <= y0 < len(image[0]):
-                        image[y0][x0] = (255, 255, 255)  # белый
+                    drawline(x0, y0, image)
                     err -= dx
                     if err < 0:
                         x0 += sx
                         err += dy
                     y0 += sy
-                if 0 <= x1 < len(image) and 0 <= y1 < len(image[0]):
-                    image[y1][x1] = (255, 255, 255)
+                drawline(x1, y1, image)
 
 def int_Bresenham(x0, y0, x1, y1, image):
     dx = x1 - x0
@@ -105,8 +101,7 @@ def int_Bresenham(x0, y0, x1, y1, image):
                 else:
                     y -= 1
                 px += 2 * (dy1 - dx1)
-            if 0 <= x < len(image) and 0 <= y < len(image[0]):
-                image[y][x] = (255, 255, 255)  # белый
+            drawline(x, y, image)
     else:
         if dy >= 0:
             x = x0
@@ -128,8 +123,7 @@ def int_Bresenham(x0, y0, x1, y1, image):
                 else:
                     x -= 1
                 px += 2 * (dx1 - dy1)
-            if 0 <= x < len(image) and 0 <= y < len(image[0]):
-                image[y][x] = (255, 255, 255)  
+            drawline(x, y, image) 
 
 def save_bmp(filename, image):
     height = len(image)
