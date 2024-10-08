@@ -19,10 +19,10 @@ class ImageProcessorApp:
         self.image_frame2 = tk.Label(root, text="Второе изображение")
         self.image_frame2.grid(row=0, column=1, padx=10, pady=10)
 
-        self.image_frame3 = tk.Label(root, text="Изображение с максимальной насыщенностью")
+        self.image_frame3 = tk.Label(root, text="Изображение с насыщенностью 30%")
         self.image_frame3.grid(row=1, column=0, padx=10, pady=10)
 
-        self.image_frame4 = tk.Label(root, text="Результат наложения")
+        self.image_frame4 = tk.Label(root, text="Результат прозрачного наложения")
         self.image_frame4.grid(row=1, column=1, padx=10, pady=10)
 
         self.load_button1 = tk.Button(root, text="Выбрать первое изображение", command=self.load_image1)
