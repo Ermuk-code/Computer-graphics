@@ -10,7 +10,7 @@ class ImageProcessorApp:
 
         self.image1 = None
         self.image2 = None
-        self.image1_max_saturation = None
+        self.image1_saturation = None
         self.result_image = None
 
         self.image_frame1 = tk.Label(root, text="Первое изображение")
@@ -64,8 +64,8 @@ class ImageProcessorApp:
 
     def inc_sat(self):
         if self.image1:
-            self.image1_max_saturation = self.increase_saturation(self.image1)
-            self.display_image(self.image1_max_saturation, self.image_frame3)
+            self.image1_saturation = self.increase_saturation(self.image1)
+            self.display_image(self.image1_saturation, self.image_frame3)
 
     def increase_saturation(self, image):
         hsv_image = image.convert("HSV")
@@ -94,15 +94,15 @@ class ImageProcessorApp:
         return overlay_image
 
     def process_images(self):
-        if self.image1_max_saturation and self.image2:
-            self.result_image = self.overlay_transparency(self.image1_max_saturation, self.image2)
+        if self.image1_saturation and self.image2:
+            self.result_image = self.overlay_transparency(self.image1_saturation, self.image2)
             self.display_image(self.result_image, self.image_frame4)
 
     def save_saturation_result(self):
-        if self.image1_max_saturation:
+        if self.image1_saturation:
             file_path = filedialog.asksaveasfilename(defaultextension=".png")
             if file_path:
-                self.image1_max_saturation.save(file_path)
+                self.image1_saturation.save(file_path)
 
     def save_result(self):
         if self.result_image:
