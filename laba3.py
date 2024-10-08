@@ -78,14 +78,27 @@ class ImageProcessorApp:
         return result_image
 
     def overlay_transparency(self, image1, image2):
+        # Приводим изображения к одинаковому размеру (берем минимальный размер)
         width = min(image1.width, image2.width)
         height = min(image1.height, image2.height)
         image1_resized = image1.resize((width, height))
         image2_resized = image2.resize((width, height))
+
+        # Проверка на наличие альфа-канала и удаление его из второго изображения, если он есть
+        if image1_resized.mode == 'RGBA':
+            image1_resized = image1_resized.convert('RGB')
+        if image2_resized.mode == 'RGBA':
+            image2_resized = image2_resized.convert('RGB')
+
+        # Преобразуем изображения в массивы
         array1 = np.array(image1_resized)
         array2 = np.array(image2_resized)
+
+        # Наложение первого изображения на второе (среднее значение пикселей)
         overlay_array = (array1.astype(np.float32) + array2.astype(np.float32)) / 2
         overlay_array = overlay_array.astype(np.uint8)
+
+        # Преобразуем обратно в изображение
         overlay_image = Image.fromarray(overlay_array)
         return overlay_image
 
