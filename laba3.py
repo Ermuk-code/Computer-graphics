@@ -6,7 +6,7 @@ from PIL import Image, ImageEnhance, ImageChops, ImageTk
 class ImageProcessorApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Наложение")
+        self.root.title("Вариант 2")
 
         self.image1 = None
         self.image2 = None
