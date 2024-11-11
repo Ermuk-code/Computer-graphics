@@ -14,7 +14,6 @@ def draw_cube(ax):
                          [-r, -r, -r],
                          [-r,  r, -r]])
     
-    # Ребра куба
     edges = [
         [vertices[0], vertices[1]],
         [vertices[1], vertices[2]],
@@ -30,12 +29,11 @@ def draw_cube(ax):
         [vertices[3], vertices[7]],
     ]
     
-    # Отображение рёбер
     for edge in edges:
         ax.plot3D(*zip(*edge), color='b')
 
 def draw_dodecahedron(ax):
-    phi = (1 + np.sqrt(5)) / 2  # Golden ratio
+    phi = (1 + np.sqrt(5)) / 2  
     a = 1 / phi
     b = 1
 
