@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Ввод пути к изображению
-image_path = input("Введите путь к изображению в формате jpg (например, 'fragment.jpg'): ")
+image_path = input("Введите путь к изображению в формате jpg: ")
 image = cv2.imread(image_path)
 
 # Проверка на успешную загрузку изображения
