@@ -135,7 +135,7 @@ class BezierApp:
 
         
         for i, vertex in enumerate(vertices):
-            z_value = vertex[2]  # z-координата вершины
+            z_value = vertex[2] 
             Z += z_value * np.exp(-((X - vertex[0]) ** 2 + (Y - vertex[1]) ** 2))
 
             print(f'Этап {i + 1}: Добавлена вершина {vertex} (z = {z_value})')
@@ -148,7 +148,7 @@ class BezierApp:
         ax.set_ylabel('Y axis')
         ax.set_zlabel('Z axis')
         plt.show()
-        
+
 if __name__ == "__main__":
     root = Tk()
     app = BezierApp(root)
